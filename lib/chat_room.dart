@@ -45,13 +45,6 @@ class ChatRoom extends StatelessWidget {
                             ),
                           );
                         }
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                            radius: 35,
-                            backgroundColor: Colors.green[500],
-                          ),
-                        );
                       },
                     ),
                   ),
@@ -92,6 +85,14 @@ class ChatRoom extends StatelessWidget {
                             ],
                           );
                         }
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.green[500],
+                          ),
+                        );
+
                         return Padding(
                           padding: EdgeInsets.all(7),
                           child: Text(
