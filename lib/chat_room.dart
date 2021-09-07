@@ -177,6 +177,7 @@ class ChatRoom extends StatelessWidget {
                         leading: CircleAvatar(
                           backgroundColor: Colors.green,
                           radius: 37,
+                          //backgroundImage: NetworkImage(users[index].photoUrl),
                         ),
                         title: Row(
                           children: [
