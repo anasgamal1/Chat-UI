@@ -1,5 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'user.dart';
+
+List<User> users = [
+  User(
+      activeMsg: true,
+      message: 'Hello ka xa halkabar',
+      name: 'Ram Hari',
+      photoUrl: '',
+      time: '7:00'),
+  User(
+      activeMsg: false,
+      message: 'ko ho aelo',
+      name: 'Sham Hari',
+      photoUrl: '',
+      time: '7:50'),
+  User(
+      activeMsg: false,
+      message: 'Have a good day',
+      name: 'Himal Hari',
+      photoUrl: '',
+      time: '5:60'),
+  User(
+      activeMsg: false,
+      message: 'Hey! whats up man',
+      name: 'yubraj Hari',
+      photoUrl: '',
+      time: '4:57'),
+  User(
+      activeMsg: false,
+      message: 'Anomol send a photo',
+      name: 'Anomol Hari',
+      photoUrl: '',
+      time: '3:14')
+];
 
 class ChatRoom extends StatelessWidget {
   @override
@@ -137,17 +171,17 @@ class ChatRoom extends StatelessWidget {
                   ),
                 ),
                 child: ListView.builder(
-                    itemCount: 10,
+                    itemCount: users.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
                         leading: CircleAvatar(
                           backgroundColor: Colors.green,
-                          radius: 35,
+                          radius: 37,
                         ),
                         title: Row(
                           children: [
                             Text(
-                              'full name',
+                              users[index].name,
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
