@@ -45,6 +45,13 @@ class ChatRoom extends StatelessWidget {
                             ),
                           );
                         }
+                        return Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.green[500],
+                          ),
+                        );
                       },
                     ),
                   ),
@@ -84,15 +91,24 @@ class ChatRoom extends StatelessWidget {
                               ),
                             ],
                           );
+                        } else if (index == tabs.length - 1) {
+                          return Container(
+                            padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                            alignment: Alignment.center,
+                            child: Text(
+                              tabs[index],
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.green[500],
+                              borderRadius: BorderRadius.circular(17),
+                            ),
+                          );
                         }
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                            radius: 35,
-                            backgroundColor: Colors.green[500],
-                          ),
-                        );
-
                         return Padding(
                           padding: EdgeInsets.all(7),
                           child: Text(
@@ -111,15 +127,47 @@ class ChatRoom extends StatelessWidget {
               ),
             ),
             Expanded(
-                child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+              child: Container(
+                padding: EdgeInsets.all(25),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
                 ),
+                child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.green,
+                          radius: 35,
+                        ),
+                        title: Row(
+                          children: [
+                            Text(
+                              'full name',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              '7:00',
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                        subtitle: Text('Hi hello nameste'),
+                      );
+                    }),
               ),
-            )),
+            ),
           ],
         ),
       ),
