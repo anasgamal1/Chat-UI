@@ -4,34 +4,40 @@ import 'user.dart';
 
 List<User> users = [
   User(
-      activeMsg: true,
-      message: 'Hello ka xa halkabar',
-      name: 'Ram Hari',
-      photoUrl: '',
+      activeMsg: false,
+      message: 'Hello Murad Alemdar',
+      name: 'Murad Alemdar',
+      photoUrl:
+          'https://ellearabia.com/media/cache/article_thumbnail_desktop/files/cms/standalone-content/thumbnail/5c56b0ab80ec1090453701.jpg',
+      /*'images/'*/
       time: '7:00'),
   User(
-      activeMsg: false,
-      message: 'ko ho aelo',
-      name: 'Sham Hari',
-      photoUrl: '',
+      activeMsg: true,
+      message: 'Hello Abdulhey ',
+      name: 'Abdulhey',
+      photoUrl: 'https://www.hsreat.com/attachments/101-jpg.73248/',
+      /*images/Abdulhey.jpg*/
       time: '7:50'),
   User(
       activeMsg: false,
-      message: 'Have a good day',
-      name: 'Himal Hari',
-      photoUrl: '',
+      message: 'Hello Laila',
+      name: 'Laila',
+      photoUrl:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHLxbZMs9-s9-Z6Fwhm5GqFM0XRm_YZWms8mDrlsJbqOHQ_XgsXkZjbstyvQQLcPaLV_Y&usqp=CAU',
       time: '5:60'),
   User(
       activeMsg: false,
-      message: 'Hey! whats up man',
-      name: 'yubraj Hari',
-      photoUrl: '',
+      message: 'Hello Oktay Kaynarca',
+      name: 'Oktay Kaynarca',
+      photoUrl:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzNwlGzQgh_DK0JAu4BsFa_VtpSeCngx3mA&usqp=CAU',
       time: '4:57'),
   User(
       activeMsg: false,
-      message: 'Anomol send a photo',
-      name: 'Anomol Hari',
-      photoUrl: '',
+      message: 'Hello Hoda Turus',
+      name: 'Hoda Turus',
+      photoUrl:
+          'https://cdn101.adwimg.com/u/180624/forums/jyk3ZxbErpIDIyjmGREzK36nGsaL6FqT.png',
       time: '3:14')
 ];
 
@@ -64,24 +70,29 @@ class ChatRoom extends StatelessWidget {
                   Container(
                     height: 100,
                     child: ListView.builder(
-                      itemCount: 6,
+                      itemCount: 7,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (_, index) {
                         if (index == 0) {
-                          return CircleAvatar(
-                            radius: 35,
-                            backgroundColor: Colors.green[500],
-                            child: Icon(
-                              Icons.search,
-                              size: 35,
-                              color: Colors.white,
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CircleAvatar(
+                              radius: 35,
+                              backgroundColor: Colors.green[500],
+                              child: Icon(
+                                Icons.search,
+                                size: 35,
+                                color: Colors.white,
+                              ),
                             ),
                           );
                         }
                         return Padding(
                           padding: const EdgeInsets.all(8),
                           child: CircleAvatar(
+                            backgroundImage:
+                                NetworkImage(users[index - 1].photoUrl),
                             radius: 35,
                             backgroundColor: Colors.green[500],
                           ),
@@ -127,7 +138,7 @@ class ChatRoom extends StatelessWidget {
                           );
                         } else if (index == tabs.length - 1) {
                           return Container(
-                            padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                            padding: EdgeInsets.fromLTRB(11, 4, 11, 4),
                             alignment: Alignment.center,
                             child: Text(
                               tabs[index],
@@ -177,7 +188,8 @@ class ChatRoom extends StatelessWidget {
                         leading: CircleAvatar(
                           backgroundColor: Colors.green,
                           radius: 37,
-                          //backgroundImage: NetworkImage(users[index].photoUrl),
+                          backgroundImage: NetworkImage(users[index].photoUrl),
+                          /*backgroundImage: AssetImage(users[index].photoUrl),*/
                         ),
                         title: Row(
                           children: [
@@ -190,7 +202,7 @@ class ChatRoom extends StatelessWidget {
                             ),
                             Spacer(),
                             Text(
-                              '7:00',
+                              users[index].time,
                               style: TextStyle(
                                 fontSize: 17,
                                 color: Colors.grey[500],
@@ -198,7 +210,7 @@ class ChatRoom extends StatelessWidget {
                             ),
                           ],
                         ),
-                        subtitle: Text('Hi hello nameste'),
+                        subtitle: Text(users[index].message),
                       );
                     }),
               ),
