@@ -70,7 +70,7 @@ class ChatRoom extends StatelessWidget {
                   Container(
                     height: 100,
                     child: ListView.builder(
-                      itemCount: 7,
+                      itemCount: 6,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (_, index) {
