@@ -4,7 +4,7 @@ import 'user.dart';
 
 List<User> users = [
   User(
-      activeMsg: false,
+      activeMsg: true,
       message: 'Hello Murad Alemdar',
       name: 'Murad Alemdar',
       photoUrl:
@@ -12,7 +12,7 @@ List<User> users = [
       /*'images/'*/
       time: '7:00'),
   User(
-      activeMsg: true,
+      activeMsg: false,
       message: 'Hello Abdulhey ',
       name: 'Abdulhey',
       photoUrl: 'https://www.hsreat.com/attachments/101-jpg.73248/',
@@ -46,7 +46,7 @@ class ChatRoom extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> tabs = ["Messages", "Calls", "Group", "Create"];
     return Scaffold(
-      backgroundColor: Colors.green[800],
+      backgroundColor: Color(0xff105946),
       body: SafeArea(
         child: Column(
           children: [
@@ -70,7 +70,7 @@ class ChatRoom extends StatelessWidget {
                   Container(
                     height: 100,
                     child: ListView.builder(
-                      itemCount: 6,
+                      itemCount: 5,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (_, index) {
@@ -91,10 +91,12 @@ class ChatRoom extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.all(8),
                           child: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(users[index - 1].photoUrl),
+                            /*backgroundImage:
+                                NetworkImage(users[index ].photoUrl),*/
+                            backgroundImage: NetworkImage(
+                                users[index].photoUrl), //This is the real code
                             radius: 35,
-                            backgroundColor: Colors.green[500],
+                            backgroundColor: Color(0xff427c6E),
                           ),
                         );
                       },
@@ -185,12 +187,35 @@ class ChatRoom extends StatelessWidget {
                     itemCount: users.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.green,
-                          radius: 37,
-                          backgroundImage: NetworkImage(users[index].photoUrl),
-                          /*backgroundImage: AssetImage(users[index].photoUrl),*/
-                        ),
+                        leading: users[index].activeMsg
+                            ? Stack(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: Colors.green,
+                                    radius: 37,
+                                    backgroundImage:
+                                        NetworkImage(users[index].photoUrl),
+                                  ),
+                                  Positioned(
+                                    left: 13,
+                                    child: Container(
+                                      height: 13,
+                                      width: 13,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.amber,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : CircleAvatar(
+                                backgroundColor: Colors.green,
+                                radius: 37,
+                                backgroundImage:
+                                    NetworkImage(users[index].photoUrl),
+                                /*backgroundImage: AssetImage(users[index].photoUrl),*/
+                              ),
                         title: Row(
                           children: [
                             Text(
